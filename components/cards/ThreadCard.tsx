@@ -1,3 +1,4 @@
+import { formatDateString } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -56,7 +57,7 @@ export default function ThreadCard({
           </div>
           <div className="flex w-full flex-col">
             <Link href={`/profile/${author.id}`} className="w-fit">
-              <h4 className="cursor-pointer text-base1-semibold text-light-1">
+              <h4 className="cursor-pointer text-base1-semibold text-light-1 mb-1">
                 {author.name}
               </h4>
             </Link>
@@ -111,6 +112,24 @@ export default function ThreadCard({
           </div>
         </div>
       </div>
+      {!isComment && community && (
+        <Link
+          href={`/communities/${community.id}`}
+          className="mt-5 flex items-center"
+        >
+          <p className="text-subtle-medium text-gray-1">
+            {formatDateString(createdAt)} - {community.name} Community
+          </p>
+
+          <Image
+            src={community.image}
+            alt="community-image"
+            width={14}
+            height={14}
+            className="ml-1 rounded-full object-cover"
+          />
+        </Link>
+      )}
     </article>
   );
 }
