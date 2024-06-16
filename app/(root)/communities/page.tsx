@@ -1,4 +1,5 @@
 import CommunityCard from "@/components/cards/CommunityCard";
+import Searchbar from "@/components/forms/Search";
 
 import { fetchCommunities } from "@/lib/actions/community.actions";
 
@@ -16,6 +17,9 @@ export default async function Page() {
   return (
     <section>
       <h1 className="head-text mb-10">Search</h1>
+      <div className="mt-5">
+        <Searchbar routeType="communities" />
+      </div>
       <div className="mt-14 flex flex-col gap-9">
         {result.communities.length === 0 ? (
           <p className="no-result">No Communities</p>

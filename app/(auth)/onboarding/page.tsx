@@ -9,7 +9,7 @@ export default async function Page() {
     return null;
   }
   const userInfo = await fetchUser(user.id);
-  if (userInfo.onboarding) {
+  if (userInfo?.onboarding) {
     redirect("/");
   }
 
